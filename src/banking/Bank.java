@@ -1,5 +1,7 @@
 package banking;
 
+import utils.MenuHelper;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Random;
@@ -23,7 +25,9 @@ class Bank {
             System.out.println("2. Log into account");
             System.out.println("0. Exit");
 
-            int choice = scanner.nextInt();
+            String stringChoice = scanner.next();
+            int choice = MenuHelper.menuChoice(stringChoice,100);
+
             switch (choice) {
                 case 1:
                     this.createAccount();

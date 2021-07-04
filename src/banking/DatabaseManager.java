@@ -26,12 +26,13 @@ public class DatabaseManager {
     }
 
     void createTableCard(Connection con) {
-        try (Statement statement = con.createStatement()) {
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS card(" +
-                    "id INTEGER PRIMARY KEY," +
-                    "number TEXT," +
-                    "pin TEXT," +
-                    "balance INTEGER DEFAULT 0)");
+        String createTable = "CREATE TABLE IF NOT EXISTS card(" +
+                "id INTEGER PRIMARY KEY ," +
+                "number TEXT," +
+                "pin TEXT," +
+                "balance INTEGER DEFAULT 0)";
+        try (PreparedStatement preparedStatement = con.prepareStatement(createTable)) {
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Creating table card failed");
             e.printStackTrace();

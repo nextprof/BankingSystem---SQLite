@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import utils.MenuHelper;
+
 class Customer {
 
     private final String cardNumber;
@@ -26,7 +28,9 @@ class Customer {
             System.out.println("5. Log out");
             System.out.println("0. Exit");
 
-            int choice = scanner.nextInt();
+            String stringChoice = scanner.next();
+            int choice = MenuHelper.menuChoice(stringChoice,100);
+
             switch (choice) {
                 case 1:
                     DBManager.printBalance(con,cardNumber);
